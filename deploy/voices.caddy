@@ -1,0 +1,10 @@
+voices.germansmedia.nl {
+	import site_tls
+	handle /api/* {
+		reverse_proxy localhost:8080
+	}
+	handle {
+		root * /srv/sites/voices
+		import flutter_site
+	}
+}

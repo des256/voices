@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"   # host side MUST stay 127.0.0.1: Docker bypasses ufw
+    env_file: .env              # VOICES_USERNAME / VOICES_PASSWORD / VOICES_SECRET; never commit it
+    volumes:
+      - voices-data:/data       # finished reports survive rebuilds
+
+volumes:
+  voices-data:
